@@ -1,6 +1,10 @@
 import Image from "next/image";
+import { getWorkouts } from "@/lib/fitlog";
+import WorkoutCard from "@/components/WorkoutCard";
 
-export default function Home() {
+export default async function Home() {
+  const workouts = await getWorkouts();
+  
   return (
     <main className="bg-[#0b0c0e] px-8 py-10">
       <section className="mx-auto flex min-h-98.75 max-w-273 items-center overflow-hidden rounded-[14px] border border-[#24272d] bg-[#15171c]">
@@ -33,6 +37,33 @@ export default function Home() {
             priority
             className="object-contain object-center"
           />
+        </div>
+      </section>
+
+      <section id="library" className="mx-auto mt-14 max-w-273">
+        <div className="mb-6">
+          <h2 className="text-[20px] font-black uppercase text-white">
+            The Library
+          </h2>
+
+          <p className="mt-1 text-[12px] text-[#777d87]">
+            Twelve lifts covering every major muscle group.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-5">
+          {workouts.map((workout) => (
+            <WorkoutCard
+              key={workout.id}
+              name={workout.name}
+              image={workout.image}
+              muscleGroups={workout.muscleGroups}
+              equipment={workout.equipment}
+              difficulty={workout.difficulty}
+              duration={workout.duration}
+              caloriesBurned={workout.caloriesBurned}
+            />
+          ))}
         </div>
       </section>
     </main>
