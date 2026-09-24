@@ -4,7 +4,7 @@ import WorkoutCard from "@/components/WorkoutCard";
 
 export default async function Home() {
   const workouts = await getWorkouts();
-  
+
   return (
     <main className="bg-[#0b0c0e] px-8 py-10">
       <section className="mx-auto flex min-h-98.75 max-w-273 items-center overflow-hidden rounded-[14px] border border-[#24272d] bg-[#15171c]">
@@ -22,12 +22,12 @@ export default async function Home() {
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
 
-          <button
-            type="button"
-            className="mt-6 rounded-[5px] bg-[#baff00] px-5 py-3 text-[11px] font-extrabold uppercase tracking-wide text-black transition hover:bg-[#c8ff33]"
+          <a
+            href="#library"
+            className="mt-6 inline-block rounded-[5px] bg-[#baff00] px-5 py-3 text-[11px] font-extrabold uppercase tracking-wide text-black"
           >
             Browse Workouts
-          </button>
+          </a>
         </div>
         <div className="relative h-full min-h-98.75 flex-1">
           <Image
@@ -55,6 +55,7 @@ export default async function Home() {
           {workouts.map((workout) => (
             <WorkoutCard
               key={workout.id}
+              id={workout.id}
               name={workout.name}
               image={workout.image}
               muscleGroups={workout.muscleGroups}
