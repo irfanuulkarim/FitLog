@@ -8,16 +8,12 @@ type Props = {
   workout: Workout;
 };
 
-export default function SaveWorkoutButton({
-  workout,
-}: Props) {
+export default function SaveWorkoutButton({ workout }: Props) {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     function update() {
-      setSaved(
-        getSaved().some((item) => item.id === workout.id)
-      );
+      setSaved(getSaved().some((item) => item.id === workout.id));
     }
 
     update();
@@ -53,10 +49,10 @@ export default function SaveWorkoutButton({
     <button
       onClick={handleClick}
       disabled={saved}
-      className={`rounded-[5px] border px-4 py-2 text-[8px] font-semibold ${
+      className={`rounded-md border px-5 py-3 text-[10px] font-bold uppercase tracking-wide transition ${
         saved
-          ? "border-[#baff00] text-[#baff00]"
-          : "border-[#353941] text-[#c2c5ca]"
+          ? "border-[#baff00] bg-[#171c13] text-[#baff00]"
+          : "border-[#353a43] bg-transparent text-[#c1c5cc] hover:border-[#606671] hover:text-white"
       }`}
     >
       {saved ? "✓ Saved" : "♡ Save for later"}

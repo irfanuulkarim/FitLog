@@ -41,7 +41,7 @@ export default async function WorkoutPage({
     }
 
     return (
-        <main className="min-h-screen bg-[#0b0c0e]">
+        <main className="bg-[#0b0c0e]">
             <div className="mx-auto max-w-273 px-8 py-5">
                 <section className="border border-[#202329] bg-[#101216]">
                     <div className="grid grid-cols-[1fr_1fr] gap-6 p-6">
@@ -61,7 +61,7 @@ export default async function WorkoutPage({
                                 {workout.name}
                             </h1>
 
-                            <p className="mt-2 max-w-112.5 text-[9px] leading-[1.45] text-[#9da3ad]">
+                            <p className="mt-2 max-w-112.5 text-[12px] leading-[1.45] text-[#9da3ad]">
                                 {workout.description}
                             </p>
 
@@ -69,7 +69,7 @@ export default async function WorkoutPage({
                                 {workout.muscleGroups.map((group) => (
                                     <span
                                         key={group}
-                                        className="rounded-full bg-[#baff00] px-2 py-0.75 text-[7px] font-black uppercase leading-none text-black"
+                                        className="rounded-full bg-[#baff00] px-2 py-0.75 text-[10px] font-black uppercase leading-none text-black"
                                     >
                                         {group}
                                     </span>
@@ -115,7 +115,7 @@ export default async function WorkoutPage({
                             </div>
 
                             <div className="mt-4">
-                                <h2 className="text-[9px] font-black uppercase text-white">
+                                <h2 className="text-[12px] font-black uppercase text-white">
                                     Instructions
                                 </h2>
 
@@ -124,7 +124,7 @@ export default async function WorkoutPage({
                                         (instruction, index) => (
                                             <li
                                                 key={instruction}
-                                                className="flex gap-2 text-[8px] leading-[1.35] text-[#9da3ad]"
+                                                className="flex gap-2 text-[10px] leading-[1.35] text-[#9da3ad]"
                                             >
                                                 <span className="shrink-0 text-[#777d87]">
                                                     {index + 1}.
@@ -137,33 +137,13 @@ export default async function WorkoutPage({
                                 </ol>
                             </div>
 
-                            <div className="mt-4 flex gap-2">
+                            <div className="mt-7 flex flex-wrap items-center gap-3">
                                 <AddToPlanButton workout={workout} />
-
                                 <SaveWorkoutButton workout={workout} />
                             </div>
                         </div>
                     </div>
 
-                    <footer className="flex items-center justify-between border-t border-[#202329] px-6 py-4">
-                        <Link href="/" className="flex items-center gap-2">
-                            <Image
-                                src="/images/logo.png"
-                                alt="FitLog"
-                                width={84}
-                                height={28}
-                                priority
-                                className="h-7 w-auto"
-                            />
-                            <span className="text-[18px] font-extrabold tracking-wide text-white">
-                                FITLOG
-                            </span>
-                        </Link>
-
-                        <p className="text-[7px] text-[#626771]">
-                            © 2026 FitLog — Workout Library. Train hard, log honest.
-                        </p>
-                    </footer>
                 </section>
             </div>
         </main>
@@ -184,11 +164,11 @@ function StatRow({
             className={`flex items-center justify-between px-3 py-2 ${!last ? "border-b border-[#24272d]" : ""
                 }`}
         >
-            <span className="text-[6px] font-medium uppercase tracking-widest text-[#777d87]">
+            <span className="text-[10px] font-medium uppercase tracking-widest text-[#777d87]">
                 {label}
             </span>
 
-            <span className="text-[7px] text-[#d0d2d6]">
+            <span className="text-[10px] text-[#d0d2d6]">
                 {value}
             </span>
         </div>

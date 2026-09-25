@@ -8,9 +8,7 @@ type Props = {
   workout: Workout;
 };
 
-export default function AddToPlanButton({
-  workout,
-}: Props) {
+export default function AddToPlanButton({ workout }: Props) {
   const [added, setAdded] = useState(false);
   const [limitReached, setLimitReached] = useState(false);
 
@@ -18,9 +16,7 @@ export default function AddToPlanButton({
     function update() {
       const plan = getPlan();
 
-      setAdded(
-        plan.some((item) => item.id === workout.id)
-      );
+      setAdded(plan.some((item) => item.id === workout.id));
 
       setLimitReached(
         plan.length >= 5 &&
@@ -71,12 +67,12 @@ export default function AddToPlanButton({
     <button
       onClick={handleClick}
       disabled={added || limitReached}
-      className={`rounded-[5px] px-4 py-2 text-[8px] font-black ${
+      className={`rounded-md px-5 py-3 text-[10px] font-black uppercase tracking-wide transition ${
         added
-          ? "bg-[#30342a] text-[#baff00]"
+          ? "border border-[#baff00] bg-[#1b2114] text-[#baff00]"
           : limitReached
-            ? "cursor-not-allowed bg-[#292b2f] text-[#666a72]"
-            : "bg-[#baff00] text-black"
+            ? "cursor-not-allowed bg-[#292c31] text-[#666b74]"
+            : "bg-[#baff00] text-black hover:bg-[#c5ff26]"
       }`}
     >
       {added
