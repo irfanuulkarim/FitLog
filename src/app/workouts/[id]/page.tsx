@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getWorkouts } from "@/lib/fitlog";
+import AddToPlanButton from "@/components/AddToPlanButton";
+import SaveWorkoutButton from "@/components/SaveWorkoutButton";
 
 type WorkoutPageProps = {
     params: Promise<{
@@ -136,13 +138,9 @@ export default async function WorkoutPage({
                             </div>
 
                             <div className="mt-4 flex gap-2">
-                                <button className="rounded-[5px] bg-[#baff00] px-4 py-2 text-[8px] font-black text-black">
-                                    ⊞ &nbsp; Add to today&apos;s plan
-                                </button>
+                                <AddToPlanButton workout={workout} />
 
-                                <button className="rounded-[5px] border border-[#353941] px-4 py-2 text-[8px] font-semibold text-[#c2c5ca]">
-                                    ♡ &nbsp; Save for later
-                                </button>
+                                <SaveWorkoutButton workout={workout} />
                             </div>
                         </div>
                     </div>

@@ -51,7 +51,7 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {workouts.map((workout) => (
             <WorkoutCard
               key={workout.id}
@@ -60,9 +60,9 @@ export default async function Home() {
               image={workout.image}
               muscleGroups={workout.muscleGroups}
               equipment={workout.equipment}
-              difficulty={workout.difficulty}
               duration={workout.duration}
               caloriesBurned={workout.caloriesBurned}
+              rating={workout.rating}
             />
           ))}
         </div>

@@ -1,17 +1,37 @@
 "use client";
 
+import { getPlan, getSaved } from "@/lib/storage";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
     const pathname = usePathname();
 
+    const [planCount, setPlanCount] = useState(0);
+    const [savedCount, setSavedCount] = useState(0);
+
     const isWorkoutActive = pathname === "/";
     const isPlanActive = pathname === "/my-plan";
 
+    useEffect(() => {
+        function updateCounts() {
+            setPlanCount(getPlan().length);
+            setSavedCount(getSaved().length);
+        }
+
+        updateCounts();
+
+        window.addEventListener("fitlog-storage", updateCounts);
+
+        return () => {
+            window.removeEventListener("fitlog-storage", updateCounts);
+        };
+    }, []);
+
     return (
-        <header className="border-b border-zinc-800 bg-[#0b0b0b]">
+        <header className="sticky top-0 z-40 border-b border-zinc-800 bg-[#0b0b0b]">
             <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
                 <Link href="/" className="flex items-center gap-2">
                     <Image
@@ -55,11 +75,11 @@ export default function Navbar() {
                     aria-label="Open my plan"
                 >
                     <span className="rounded-full bg-[#ccff00] px-3 py-1.5 text-xs font-black text-black sm:px-4">
-                        PLAN <span className="ml-1">0</span>
+                        PLAN <span className="ml-1">{planCount}</span>
                     </span>
 
                     <span className="rounded-full border border-zinc-600 px-3 py-1.5 text-xs font-black text-white sm:px-4">
-                        SAVED <span className="ml-1">0</span>
+                        SAVED <span className="ml-1">{savedCount}</span>
                     </span>
                 </Link>
             </div>
